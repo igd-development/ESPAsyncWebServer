@@ -21,8 +21,9 @@ idf_component_register(
     REQUIRES "${requires}"
 )
 
-#find_library(md5lib mbedtls_esp32)
-#target_link_libraries(${COMPONENT_TARGET} PUBLIC ${md5lib})
-
 target_compile_definitions(${COMPONENT_TARGET} PUBLIC -DESP32)
 target_compile_options(${COMPONENT_TARGET} PRIVATE -fno-rtti)
+
+# Somewhere there seems to be a cyclic dependency (arduino-esp32?) producing linker errors
+# without this setting. When dependencies are fixed, following can be omitted.
+set_target_properties(${COMPONENT_TARGET} PROPERTIES LINK_INTERFACE_MULTIPLICITY 3)
