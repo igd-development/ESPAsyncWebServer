@@ -23,7 +23,8 @@
     },
     {
       "name": "AsyncTCP",
-      "platforms": "espressif32"
+      "platforms": "espressif32",
+      "version": "https://github.com/igd-development/AsyncTCP.git"
     },
     {
       "name": "Hash",
